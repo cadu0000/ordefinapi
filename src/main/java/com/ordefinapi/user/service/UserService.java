@@ -1,18 +1,21 @@
-package com.user.service;
+package com.ordefinapi.user.service;
 
-import com.user.dto.CreateUserRequestDto;
-import com.user.dto.UserResponseDto;
-import com.exception.CpfAlreadyExistsException;
-import com.exception.EmailAlreadyExistsException;
-import com.user.model.User;
-import com.user.repository.UserRepository;
+import com.ordefinapi.user.dto.CreateUserRequestDto;
+import com.ordefinapi.user.dto.UserResponseDto;
+import com.ordefinapi.exception.CpfAlreadyExistsException;
+import com.ordefinapi.exception.EmailAlreadyExistsException;
+import com.ordefinapi.user.model.User;
+import com.ordefinapi.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -40,5 +43,11 @@ public class UserService {
                 savedUser.getCpf(),
                 savedUser.getBirthday()
         );
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado com email: " + email));
     }
 }

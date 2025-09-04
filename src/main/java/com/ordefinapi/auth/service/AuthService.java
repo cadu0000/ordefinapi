@@ -1,9 +1,8 @@
-package com.auth.service;
+package com.ordefinapi.auth.service;
 
-import com.user.dto.CreateUserRequestDto;
-import com.user.dto.UserResponseDto;
-import com.user.service.UserService;
-import com.auth.util.JwtUtil;
+import com.ordefinapi.user.dto.CreateUserRequestDto;
+import com.ordefinapi.user.dto.UserResponseDto;
+import com.ordefinapi.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -17,7 +16,7 @@ import java.time.LocalDate;
 public class AuthService {
 
     private final UserService userService;
-    private final JwtUtil jwtUtil;
+    private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
     public String signUp(String email, String password, String name, String cpf, LocalDate birthday) {
@@ -29,17 +28,17 @@ public class AuthService {
         dto.setBirthday(birthday);
 
         UserResponseDto response = userService.createUser(dto);
-        return jwtUtil.generateToken(response.getEmail());
+
+        var userDetails = userService.loadUserByUsername(response.getEmail());
+        return jwtService.generateToken(userDetails);
     }
 
     public String login(String email, String password) {
-        try {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(email, password)
-            );
-        } catch (BadCredentialsException ex) {
-            throw ex;
-        }
-        return jwtUtil.generateToken(email);
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(email, password)
+        );
+
+        var userDetails = userService.loadUserByUsername(email);
+        return jwtService.generateToken(userDetails);
     }
 }
