@@ -1,11 +1,11 @@
-package com.transactions.service;
+package com.ordefinapi.transactions.service;
 
-import com.transactions.dto.TransactionRequestDTO;
-import com.transactions.dto.TransactionResponseDTO;
-import com.transactions.model.Category;
-import com.transactions.model.Transaction;
-import com.transactions.repository.CategoryRepository;
-import com.transactions.repository.TransactionRepository;
+import com.ordefinapi.transactions.dto.TransactionRequestDTO;
+import com.ordefinapi.transactions.dto.TransactionResponseDTO;
+import com.ordefinapi.transactions.model.Category;
+import com.ordefinapi.transactions.model.Transaction;
+import com.ordefinapi.transactions.repository.CategoryRepository;
+import com.ordefinapi.transactions.repository.TransactionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -41,6 +41,7 @@ public class TransactionService {
 
     public List<TransactionResponseDTO> getTransactionsByUser(UUID userId) {
         List<Transaction> transactions = transactionRepository.findByUserId(userId);
+
         return transactions.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 

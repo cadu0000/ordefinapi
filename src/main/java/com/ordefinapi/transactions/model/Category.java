@@ -1,4 +1,4 @@
-package com.transactions.model;
+package com.ordefinapi.transactions.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

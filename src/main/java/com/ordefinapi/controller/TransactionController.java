@@ -1,9 +1,9 @@
 package com.ordefinapi.controller;
 
-import com.transactions.dto.TransactionRequestDTO;
-import com.transactions.dto.TransactionResponseDTO;
-import com.transactions.service.TransactionService;
-import com.user.model.User;
+import com.ordefinapi.transactions.dto.TransactionRequestDTO;
+import com.ordefinapi.transactions.dto.TransactionResponseDTO;
+import com.ordefinapi.transactions.service.TransactionService;
+import com.ordefinapi.user.model.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -43,7 +43,7 @@ public class TransactionController {
         return ResponseEntity.ok(created);
     }
 
-    @GetMapping("/transactions")
+    @GetMapping
     @Operation(
             summary = "Lista todas as transações do usuário autenticado",
             description = "Retorna uma lista de transações associadas ao usuário logado",
@@ -60,6 +60,7 @@ public class TransactionController {
             }
     )
     public ResponseEntity<List<TransactionResponseDTO>> listTransactions(@AuthenticationPrincipal User user) {
+        System.out.println("id controller: "+ user.getId());
         List<TransactionResponseDTO> transactions = transactionService.getTransactionsByUser(user.getId());
         return ResponseEntity.ok(transactions);
     }

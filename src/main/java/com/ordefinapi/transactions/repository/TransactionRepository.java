@@ -1,7 +1,6 @@
-package com.transactions.repository;
+package com.ordefinapi.transactions.repository;
 
-import com.transactions.model.Category;
-import com.transactions.model.Transaction;
+import com.ordefinapi.transactions.model.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
-package com.transactions.model;
+package com.ordefinapi.transactions.model;
 
-import com.user.model.User;
+import com.ordefinapi.user.model.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

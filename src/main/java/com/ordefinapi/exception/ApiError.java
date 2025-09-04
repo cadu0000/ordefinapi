@@ -1,4 +1,4 @@
-package com.exception;
+package com.ordefinapi.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;

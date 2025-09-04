@@ -1,7 +1,7 @@
 package com.ordefinapi.controller;
 
-import com.user.dto.CreateUserRequestDto;
-import com.auth.service.AuthService;
+import com.ordefinapi.user.dto.CreateUserRequestDto;
+import com.ordefinapi.auth.service.AuthService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

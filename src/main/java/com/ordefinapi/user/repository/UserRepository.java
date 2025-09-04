@@ -1,6 +1,6 @@
-package com.user.repository;
+package com.ordefinapi.user.repository;
 
-import com.user.model.User;
+import com.ordefinapi.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

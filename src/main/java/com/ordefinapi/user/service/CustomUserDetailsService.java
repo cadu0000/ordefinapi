@@ -1,6 +1,6 @@
-package com.user.service;
+package com.ordefinapi.user.service;
 
-import com.user.repository.UserRepository;
+import com.ordefinapi.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

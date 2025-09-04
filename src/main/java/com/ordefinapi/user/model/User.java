@@ -1,4 +1,4 @@
-package com.user.model;
+package com.ordefinapi.user.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -10,5 +10,5 @@ services:
     ports:
       - "${POSTGRES_PORT}:5432"
     volumes:
-      - ./src/main/java/com/infra/postgre/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./src/main/java/com/ordenfinapi/infra/postgre/init.sql:/docker-entrypoint-initdb.d/init.sql
 

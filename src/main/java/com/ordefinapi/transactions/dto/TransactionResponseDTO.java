@@ -1,4 +1,4 @@
-package com.transactions.dto;
+package com.ordefinapi.transactions.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.user.dto;
+package com.ordefinapi.user.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
